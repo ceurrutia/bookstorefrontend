@@ -41,15 +41,15 @@ function BooksTable() {
   };
 
   // Guardar cambios después de editar
-  const handleEditSubmit = async () => {
-    try {
-      await axios.put(`https://bookstorebackend-phi.vercel.app/books/${bookId}`, editBook);
-      setShowEditModal(false);
-      fetchBooks(); // Actualizar lista de libros no funcina, revisar
-    } catch (error) {
-      console.error("Error updating book:", error);
-    }
-  };
+const handleEditSubmit = async () => {
+  try {
+    await axios.put(`https://bookstorebackend-phi.vercel.app/books/${editBook._id}`, editBook); 
+    setShowEditModal(false);
+    fetchBooks(); // Actualizar lista de libros
+  } catch (error) {
+    console.error("Error updating book:", error);
+  }
+};
 
   // Abrir modal para confirmar eliminación
   const handleDelete = (bookId) => {
@@ -57,10 +57,9 @@ function BooksTable() {
     setShowDeleteModal(true);
   };
 
-  // Confirmar eliminación de libro
   const confirmDelete = async () => {
     try {
-      await axios.delete(`https://bookstorebackend-phi.vercel.app/books/${bookId}`);
+      await axios.delete(`https://bookstorebackend-phi.vercel.app/books/${deleteBookId}`); // Utiliza deleteBookId en lugar de bookId
       setShowDeleteModal(false);
       fetchBooks(); // Actualizar lista de libros
     } catch (error) {
@@ -69,12 +68,12 @@ function BooksTable() {
   };
 
   // Manejar cambios en la edición
-  const handleEditChange = (e) => {
-    setEditBook({
-      ...editBook,
-      [e.target.name]: e.target.value
-    });
-  };
+const handleEditChange = (e) => {
+  setEditBook({
+    ...editBook,
+    [e.target.name]: e.target.value
+  });
+};
 
   return (
     <div>
