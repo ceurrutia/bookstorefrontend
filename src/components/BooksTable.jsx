@@ -21,7 +21,7 @@ function BooksTable() {
   // Cargar los libros desde el backend
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/books');
+      const response = await axios.get('https://bookstorebackend-phi.vercel.app/books');
       setBooks(response.data.data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -42,7 +42,7 @@ function BooksTable() {
   // Guardar cambios después de editar
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/books/${editBook._id}`, editBook);
+      await axios.put(`https://bookstorebackend-phi.vercel.app/books${editBook._id}`, editBook);
       setShowEditModal(false);
       fetchBooks(); // Actualizar lista de libros no funcina, revisar
     } catch (error) {
@@ -59,7 +59,7 @@ function BooksTable() {
   // Confirmar eliminación de libro
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/books/${deleteBookId}`);
+      await axios.delete(`https://bookstorebackend-phi.vercel.app/books/${deleteBookId}`);
       setShowDeleteModal(false);
       fetchBooks(); // Actualizar lista de libros
     } catch (error) {
