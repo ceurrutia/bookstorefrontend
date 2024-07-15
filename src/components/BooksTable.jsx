@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
+const BASE_URL = 'https://bookstorebackend-phi.vercel.app';
+const API_URL = `${BASE_URL}/books`;
+
 function BooksTable() {
   const [books, setBooks] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -21,7 +24,7 @@ function BooksTable() {
   // Cargar los libros desde el backend
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('https://bookstorebackend-phi.vercel.app/books');
+      const response = await axios.get(API_URL);
       setBooks(response.data.data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -42,7 +45,7 @@ function BooksTable() {
   // Guardar cambios después de editar
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`https://bookstorebackend-phi.vercel.app/books/${editBook._id}`, editBook);
+      await axios.put(`${API_URL}/${bookId}`, editBook);
       setShowEditModal(false);
       fetchBooks(); // Actualizar lista de libros no funcina, revisar
     } catch (error) {
@@ -59,7 +62,7 @@ function BooksTable() {
   // Confirmar eliminación de libro
   const confirmDelete = async () => {
     try {
-      await axios.delete(`https://bookstorebackend-phi.vercel.app/books/${deleteBookId}`);
+      await axios.delete(`${API_URL}/${bookId}`);
       setShowDeleteModal(false);
       fetchBooks(); // Actualizar lista de libros
     } catch (error) {
