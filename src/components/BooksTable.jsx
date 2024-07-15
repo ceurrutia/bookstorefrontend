@@ -42,7 +42,7 @@ function BooksTable() {
   // Guardar cambios después de editar
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`https://bookstorebackend-phi.vercel.app/books${editBook._id}`, editBook);
+      await axios.put(`https://bookstorebackend-phi.vercel.app/books/${editBook._id}`, editBook);
       setShowEditModal(false);
       fetchBooks(); // Actualizar lista de libros no funcina, revisar
     } catch (error) {
