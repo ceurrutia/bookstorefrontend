@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #fcfcfc;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container{
+    max-width: 100%!important;
+}
+.card{
+    margin: 20px;
+    border: 2px solid rgb(100, 100, 100)!important;
+}
+
+h1{
+    margin: 20px!important;
+    font-size: 1.4em;
+}
+
+h2{
+    margin: 20px!important;
+    font-size: 1.4em;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+    font-size: 1.2em;
+    font-weight: 500;
+    color:rgb(34, 33, 34)
+}
+
+td{
+    font-size: 17px;
+}
+
