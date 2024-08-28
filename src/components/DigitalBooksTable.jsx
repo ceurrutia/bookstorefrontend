@@ -19,17 +19,17 @@ function DigitalBooksTable() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteDigitalBookId, setDeleteDigitalBookId] = useState('');
 
-  // Cargar los libros digitales desde el backend
+  // Obtengo los libros digitales desde el backend
   const fetchDigitalBooks = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/digitalbook');
+      const response = await axios.get('https://bookstorebackend-digital.vercel.app/digitalbook');
       setDigitalBooks(response.data.data);
     } catch (error) {
       console.error("Error fetching digital books:", error);
     }
   };
 
-  // Cargar los libros digitales al cargar el componente
+  // Cargo los libros digitales al cargar el componente
   useEffect(() => {
     fetchDigitalBooks();
   }, []);
@@ -43,9 +43,9 @@ function DigitalBooksTable() {
   // Guardar cambios después de editar
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/digitalbook/${editDigitalBook._id}`, editDigitalBook); 
+      await axios.put(`https://bookstorebackend-digital.vercel.app/digitalbook/${editDigitalBook._id}`, editDigitalBook); 
       setShowEditModal(false);
-      fetchDigitalBooks(); // Actualizar lista de libros digitales
+      fetchDigitalBooks(); 
     } catch (error) {
       console.error("Error updating digital book:", error);
     }
@@ -59,7 +59,7 @@ function DigitalBooksTable() {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/digitalbook/${deleteDigitalBookId}`);
+      await axios.delete(`https://bookstorebackend-digital.vercel.app/digitalbook/${deleteDigitalBookId}`);
       setShowDeleteModal(false);
       fetchDigitalBooks(); // Actualizar lista de libros digitales
     } catch (error) {
