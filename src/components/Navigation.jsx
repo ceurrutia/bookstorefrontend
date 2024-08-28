@@ -3,14 +3,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "/src/images/logo.png";
-import Button from "react-bootstrap/Button";
 import ButtonAddNew from "./ButtonAddNew";
+import ButtonAddNewDigital from "./ButtonAddNewDigital";
+import { Link, useLocation } from "react-router-dom";
 
 function Navigation() {
+  const location = useLocation();
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img
             src={logo}
             alt="Logo"
@@ -22,25 +25,20 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#">Contact support</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/digital-books">Digital Books</Nav.Link>
             <NavDropdown title="Actions" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Edit</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Action 1
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Some Link</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/edit">Edit</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/action-1">Action 1</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/some-link">Some Link</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Other Link
-              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/other-link">Other Link</NavDropdown.Item>
             </NavDropdown>
-            {/* <Nav.Link href="#">
-            <ButtonAddNew />
-          </Nav.Link> */}
           </Nav>
 
-          <ButtonAddNew />
+          {location.pathname === "/" ? <ButtonAddNew /> : 
+           location.pathname === "/digital-books" ? <ButtonAddNewDigital /> : null}
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
