@@ -15,7 +15,7 @@ function CreateDigitalBook({ reloadBooks }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://bookstorebackend-digital.vercel.app/digitalbook", {
+      const response = await axios.post("https://bookstorebackend-digital.vercel.app/digitalbook/", {
         title,
         author,
         publishYear,

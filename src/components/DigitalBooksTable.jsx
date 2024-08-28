@@ -22,7 +22,7 @@ function DigitalBooksTable() {
   // Obtengo los libros digitales desde el backend
   const fetchDigitalBooks = async () => {
     try {
-      const response = await axios.get('https://bookstorebackend-digital.vercel.app/digitalbook');
+      const response = await axios.get('https://bookstorebackend-digital.vercel.app/digitalbook/');
       setDigitalBooks(response.data.data);
     } catch (error) {
       console.error("Error fetching digital books:", error);
